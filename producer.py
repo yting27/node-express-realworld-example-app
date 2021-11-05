@@ -11,7 +11,7 @@ producer = KafkaProducer(bootstrap_servers=['localhost:9093', 'localhost:9094', 
                         value_serializer=lambda m: json.dumps(m).encode('utf-8'))
 
 # produce json messages
-producer.send('sample-topic', {'key1': 'value1', 'key2': 'value2'})
+future = producer.send('sample-topic', {'key1': 'value1', 'key2': 'value2'})
 
 # Block for 'synchronous' sends
 try:
