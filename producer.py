@@ -6,7 +6,7 @@ import json
 
 
 # configure multiple retries
-producer = KafkaProducer(bootstrap_servers=['localhost:9093', 'localhost:9094', 'localhost:9095'], 
+producer = KafkaProducer(bootstrap_servers=['localhost:9093'], # 'localhost:9094', 'localhost:9095' 
                         retries=5, max_in_flight_requests_per_connection=1, 
                         value_serializer=lambda m: json.dumps(m).encode('utf-8'))
 
