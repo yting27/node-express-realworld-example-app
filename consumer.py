@@ -6,8 +6,7 @@ import json
 # consume json messages
 consumer = KafkaConsumer('sample-topic', group_id='group1', client_id="sample",
                             bootstrap_servers=['localhost:9093'], # ['localhost:9093', 'localhost:9094', 'localhost:9095'],
-                            value_deserializer=lambda m: json.loads(m.decode('utf-8')),
-                            key_deserializer=lambda k: k.decode("utf-8"))
+                            value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 
 for message in consumer:
     # message value and key are raw bytes -- decode if necessary!
