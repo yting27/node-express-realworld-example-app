@@ -4,9 +4,9 @@ from kafka import KafkaConsumer
 import json
 
 # consume json messages
-consumer = KafkaConsumer('sample-topic', group_id='group1', client_id="c1",
+consumer = KafkaConsumer('sample-topic', group_id='group1', client_id="sample",
                             bootstrap_servers=['localhost:9093'], # ['localhost:9093', 'localhost:9094', 'localhost:9095'],
-                            value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+                            value_deserializer=lambda m: json.loads(m.decode('utf-8')), auto_offset_reset='earliest', enable_auto_commit=False)
 
 for message in consumer:
     # message value and key are raw bytes -- decode if necessary!
